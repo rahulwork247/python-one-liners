@@ -1,0 +1,40 @@
+name: Update Python One-Liners
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Fetch candidate one-liners
+        id: fetch
+        run: |
+          # Placeholder for actual fetch logic in production
+          # For now, we just ensure the file exists
+          echo "Fetching..."
+
+      - name: Write JSON feed
+        run: |
+          mkdir -p data
+          if [ ! -f data/one_liners.json ]; then
+            echo '[]' > data/one_liners.json
+          fi
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          if git diff --quiet; then
+            echo "No changes detected"
+          else
+            git add data/one_liners.json
+            git commit -m "Update one-liners $(date -u +%Y-%m-%d)"
+            git push origin main
+          fi

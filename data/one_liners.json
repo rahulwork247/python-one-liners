@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Swap two variables",
+    "code": "a, b = b, a",
+    "source": "https://github.com/python/cpython/blob/main/README.rst"
+  },
+  {
+    "title": "List comprehension for squares",
+    "code": "squares = [x**2 for x in range(10)]",
+    "source": "https://github.com/python/cpython/blob/main/README.rst"
+  },
+  {
+    "title": "Check if string is palindrome",
+    "code": "is_palindrome = lambda s: s == s[::-1]",
+    "source": "https://github.com/python/cpython/blob/main/README.rst"
+  }
+]
